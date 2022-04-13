@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+// import Orange from './Orange';
+
+// function Fruit(props){
+//   return (
+//     <h1>{props.fav} 맛나요</h1>
+//   )
+// }
+
+function Fruit({fav}) {
+  return (<h1> {fav} 맛나요</h1>)
+}
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div>
+    <h1>헬로방가요</h1>
+    <Fruit fav='banana' />
+    <Fruit fav='mango' />
+    <Fruit fav='banana' />
+    <Fruit fav='banana' />
+  </div>
   );
 }
 
