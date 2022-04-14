@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import PropTypes from 'prop-types';
 // import Orange from './Orange';
 
 // function Fruit(props){
@@ -7,21 +8,81 @@ import React from 'react';
 //   )
 // }
 
-function Fruit({fav}) {
-  return (<h1> {fav} 맛나요</h1>)
+function Fruit({ name, picture, rating }) {
+  return (
+  <div>
+    <h2> { name } 맛나요</h2>
+    <h4> { rating } / 5.0 </h4>
+    <img src={picture} alt={name} />
+  </div>);
 }
 
+const fruitILike=[
+  {
+    id: 1,
+    name: '바나나',
+    image: 'http://qwerew.cafe24.com/images/banana.png',
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: '오렌지',
+    image: 'http://qwerew.cafe24.com/images/orange.png',
+    rating: 4.9,
+  },
+  {
+    id: 3,
+    name: '사과',
+    image: 'http://qwerew.cafe24.com/images/apple.png',
+    rating: 3,
+  },
+  {
+    id: 4,
+    name: '메론',
+    image: 'http://qwerew.cafe24.com/images/melon.png',
+    rating: 4.8,
+  },
+];
+
+// function App() {
+//   return (
+//     <div>
+//       {fruitILike.map(function(dish){
+//         return <Fruit name={dish.name} />
+        
+//       })}
+//     </div>
+//   );
+// }
+
+// function App() {
+//   return (
+//     <div>
+//       {fruitILike.map((dish) => (
+//         <Fruit key={dish.id} name={dish.name} picture={dish.image} />
+//       ))}
+//     </div>
+//   );
+// }
+
+// function renderFruit(dish){
+//   return < Fruit key={dish.id} name={dish.name} picture={dish.image} />
+// }
 
 function App() {
   return (
-  <div>
-    <h1>헬로방가요</h1>
-    <Fruit fav='banana' />
-    <Fruit fav='mango' />
-    <Fruit fav='banana' />
-    <Fruit fav='banana' />
-  </div>
+    <div>
+      {fruitILike.map((dish =>
+        < Fruit key={dish.id} name={dish.name} picture={dish.image} rating={dish.rating} />
+      ))}
+    </div>
   );
+}
+
+Fruit.propTypes={
+  name: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
 }
 
 export default App;
