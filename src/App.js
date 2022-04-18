@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 class App extends React.Component{
   state={
@@ -6,17 +7,24 @@ class App extends React.Component{
     movies: []
   }
 
+  getMovies=async()=>{
+    const {
+      data: {
+        data: {movies}
+      }
+    } = await axios.get('https://yts-proxy.now.sh/list_movies.json');
+    this.setState({
+      movies,
+      isLoading: false
+    });
+  }
+
   componentDidMount(){
-    setTimeout(()=>{
-      this.setState({
-        isLoading: false,
-      })
-    },5000)
+    this.getMovies();
   }
   
   render(){
     const {isLoading}=this.state;
-
     return(
       <div>
         {isLoading ? '로딩중..' : '로딩완료' }
@@ -24,5 +32,4 @@ class App extends React.Component{
     )
   }
 }
-
 export default App;
